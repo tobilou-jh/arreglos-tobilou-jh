@@ -161,7 +161,7 @@ int main(int argc, char *argv[])
                         val=scanf("%f", &notas[opc3][opc4]);
                         if(val != 1){
                             printf("Dato invalido\n");
-                            notas[opc3][opc4]=0;       
+                            notas[opc3][opc4]='0';       
                         }
                         if (notas[opc3][opc4] < 0 || notas[opc3][opc4] > 10) {
                             printf("Nota invalida. Ingrese nuevamente: ");
