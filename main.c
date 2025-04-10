@@ -34,7 +34,8 @@ int main(int argc, char *argv[])
         printf("4. Mostrar promedios: \n");
         printf("5. Mostrar notas: \n");
         printf("6. Mostrar nota mas alta y mas baja\n");
-        printf("7. Salir\n");
+        printf("7. Mostrar aprobados y reprobados\n");
+        printf("8. Salir\n");
         printf(">> ");
         scanf("%d", &opc);
 
@@ -136,6 +137,15 @@ int main(int argc, char *argv[])
                 promedio[i] /= cont2;
                 printf("%s %d: %.2f\n", estudiantes[i], i + 1, promedio[i]);
             }
+            printf("Promedios de las asignaturas:\n");
+            for (int j = 0; j < cont2; j++) {
+                promedioa[j] = 0;
+                for (int i = 0; i < cont; i++) {
+                    promedioa[j] += notas[i][j];
+                }
+                promedioa[j] /= cont;
+                printf("%s: %.2f\n", asig[j], promedioa[j]);
+            }
             break;
 
         case 5:
@@ -182,6 +192,20 @@ int main(int argc, char *argv[])
             }
             break;
         case 7:
+            printf("Aprobados y Reprobados:\n");
+            for (int j = 0; j < cont2; j++) {
+                for (int i = 0; i < cont; i++) {
+                    if (notas[i][j] >= 6) {
+                        aprobadosPorAsignatura[j]++;
+                    } else {
+                        reprobadosPorAsignatura[j]++;
+                    }
+                }
+                printf("En la asignatura %s hay %d aprobados y %d reprobados\n", asig[j], aprobadosPorAsignatura[j], reprobadosPorAsignatura[j]);
+            }
+            
+            break;
+        case 8:
             printf("Saliendo del programa...\n");
             break;
 
@@ -189,7 +213,7 @@ int main(int argc, char *argv[])
             printf("Opcion no valida. Intente nuevamente.\n");
             break;
         }
-    } while (opc != 7);
+    } while (opc != 8);
 
     return 0;
 }
